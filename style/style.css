@@ -1,0 +1,16 @@
+body {
+    overflow: hidden;
+}
+
+canvas {
+    border: 1px solid black;
+    float: left;
+}
+
+li {
+    list-style: none;
+}
+
+#selector {
+    float: left;
+}
