@@ -2,15 +2,67 @@ body {
     overflow: hidden;
 }
 
-canvas {
-    border: 1px solid black;
-    float: left;
+#canvas {
+    border:#000000 1px solid;
+    /*float: left;*/
 }
 
-li {
+/*li {
     list-style: none;
 }
-
+*/
 #selector {
-    float: left;
+    margin: 0px;
+    padding: inherit;
+    
+}
+/*
+.main{
+    position: relative;
+    overflow: hidden;
+    zoom: 1;
+}*/
+
+.main{
+    display: inline-block;
+}
+
+.box{
+    display: inline-block;
+    margin: 0px;
+    padding:0px;
+    vertical-align: text-top;
+    margin-right: 20px;
+}
+
+.main ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    list-style-position: outside;
+}
+
+.main ul li{
+    margin: 0 0 5px;
+    padding: 0;
+}
+
+button:hover{
+    color: hotpink;
+}
+
+#colors{
+    display: inline-block;
+    padding: 0px;
+}
+
+#colors .color{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vartical-align: middle;
+    cursor: pointer;
+    border-radius: 10px;
+    border: #ffffff;
+    box-shadow: inset 0 0 2px rgba(0,0,0,0.5);
 }
