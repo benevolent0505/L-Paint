@@ -3,22 +3,47 @@
   <head>
     <meta charset="UTF-8">
     <title>Lightning Paint</title>
-    <link xrel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/style.css">
   </head>
   <body>
-    <canvas id="canvas" width="600", height="400"></canvas>
-    <p id="display">何かを表示</p>
-    <div id="selector">
-      <ul>
-        <li><button id="draw">draw</button></li>
-        <li><button id="erase">eraser</button></li>
-        <li><button id="fill">fill</button></li>
-        <li><button id="select-area">select area</button></li>
-        <li><button id="copy">copy</button></li>
-        <li><button id="paste">paste</button></li>
-        <li><button id="load-image">load image</button></li>
-      </ul>
-    </div>
+      
+      <div class="main">
+          
+      <div class="box">
+          <canvas id="canvas" width="600", height="400"></canvas>
+      </div>
+          
+      <div class="box">
+          
+        <p id="display">何かを表示</p>
+          
+          <div id="tools">
+              <div id="colors">
+                  <div class="color" style="background:#DCDDDD"></div>
+                  <div class="color" style="background:#9ea1a3"></div>
+                  <div class="color" style="background:#2b2b2b"></div>
+                  <div class="color" style="background:#762f07"></div>
+                  <div class="color" style="background:#f5b199"></div>
+                  <div class="color" style="background:#ffdb4f"></div>
+                  <div class="color" style="background:#ccffcc"></div>
+                  <div class="color" style="background:#cc88df"></div>
+              </div>
+          </div>
+        <div id="selector">
+          <ul>
+            <li><button id="draw">draw</button></li>
+            <li><button id="erase">eraser</button></li>
+            <li><button id="fill">fill</button></li>
+            <li><button id="select-area">select area</button></li>
+            <li><button id="copy">copy</button></li>
+            <li><button id="paste">paste</button></li>
+            <li><button id="load-image">load image</button></li>
+          </ul>
+        </div>
+          
+      </div>
+          
     <script src="./js/canvas.js"></script>
+      </div>
   </body>
 </html>
