@@ -19,7 +19,7 @@ define(function(require) {
     canvas.addEventListener('mousemove', function(e) {
         draw.mouseMove(e);
     });
-    canvas.addEventListener('mouseup', function(e) {
+    canvas.addEventListener('mouseup', function() {
         draw.mouseUp();
     });
 
