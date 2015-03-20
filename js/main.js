@@ -11,39 +11,19 @@ define(function(require) {
     var canvas = init.getCanvas();
     var context = init.getContext();
 
-    var radius = 4;
-    var drag = false;
-
-    context.lineWidth = 2 * radius;
-
-    context.fillStyle = 'rgb(0, 0, 0)';
-    context.strokeStyle = 'rgb(0, 0, 0)';
-
-    canvas.addEventListener('mousedown', function(e) {
-        drag = true;
+    // canvasに対する操作
+    // draw関係
+    canvas.addEventListener('mousedown', function() {
+        draw.mouseDown();
     });
-
     canvas.addEventListener('mousemove', function(e) {
-        if (drag) {
-            context.lineTo(e.clientX, e.clientY);
-            context.stroke();
-
-            context.beginPath();
-            context.arc(e.clientX, e.clientY, radius, 0, 2 * Math.PI);
-            context.fill();
-
-            context.beginPath();
-            context.moveTo(e.clientX, e.clientY);
-        }
+        draw.mouseMove(e);
     });
-
-    canvas.addEventListener('mouseup', function(e) {
-        drag = false;
-        context.beginPath();
+    canvas.addEventListener('mouseup', function() {
+        draw.mouseUp();
     });
 
     document.getElementById('draw').addEventListener('click', function(){
-        draw.call();
     });
     document.getElementById('erase').addEventListener('click', function(){
 
