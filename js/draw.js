@@ -39,18 +39,7 @@ define(function(require) {
         },
 
     };
-       
-
-    var sizes= document.getElementById('sizes').childNodes;
-    for (var i = 0, size; size = sizes[i]; i++){
-        if (size.nodeName.toLowerCase() != 'div') continue;
-        size.addEventListener('click', function(e){
-            var size = e.currentTarget.getAttribute('data-size');
-            context.lineWidth = size;
-            
-        }, false);
-    };
-          
+                 
 
    return draw;
 });

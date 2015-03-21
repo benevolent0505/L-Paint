@@ -35,6 +35,18 @@ define(function(require) {
         },false);
     };
 
+    //線の太さを変える処理
+    var sizes= document.getElementById('sizes').childNodes;
+    for (var i = 0, size; size = sizes[i]; i++){
+        if (size.nodeName.toLowerCase() != 'div') continue;
+        size.addEventListener('click', function(e){
+            var size = e.currentTarget.getAttribute('data-size');
+            context.lineWidth = size;
+            draw.radius = size/2;
+        }, false);
+    };
+
+
     document.getElementById('draw').addEventListener('click', function(){
     });
 
