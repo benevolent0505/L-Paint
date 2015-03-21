@@ -7,6 +7,7 @@ define(function(require) {
     var copy = require('./copy');
     var paste = require('./paste');
     var loadImage = require('./loadImage');
+    var colors = require('./color');
 
     var canvas = init.getCanvas();
     var context = init.getContext();
@@ -25,6 +26,7 @@ define(function(require) {
 
     document.getElementById('draw').addEventListener('click', function(){
     });
+
     document.getElementById('erase').addEventListener('click', function(){
 
     });
