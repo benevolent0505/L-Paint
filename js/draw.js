@@ -47,7 +47,7 @@ define(function(require) {
         size.addEventListener('click', function(e){
             var size = e.currentTarget.getAttribute('data-size');
             context.lineWidth = size;
-            radius = size;
+            
         }, false);
     };
           
