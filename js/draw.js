@@ -18,7 +18,7 @@ define(function(require) {
         radius: 5,
 
         mouseDown: function() {
-            this.initColor = ('#000064')
+            this.initColor = ('#000000')
             this.drag = true;
         },
         initColor: function(color){
