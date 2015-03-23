@@ -22,25 +22,4 @@ define(function(require) {
     canvas.addEventListener('mouseup', function() {
         draw.mouseUp();
     });
-
-    document.getElementById('draw').addEventListener('click', function(){
-    });
-    document.getElementById('erase').addEventListener('click', function(){
-
-    });
-    document.getElementById('fill').addEventListener('click', function(){
-        fill.call();
-    });
-    document.getElementById('select-area').addEventListener('click', function(){
-        selectArea.call();
-    });
-    document.getElementById('copy').addEventListener('click', function(){
-        copy.call();
-    });
-    document.getElementById('paste').addEventListener('click', function(){
-        paste.call();
-    });
-    document.getElementById('load-image').addEventListener('click', function(){
-        loadImage.call();
-    });
 });
