@@ -18,7 +18,12 @@ define(function(require) {
         radius: 5,
 
         mouseDown: function() {
+            this.initColor = ('#000000')
             this.drag = true;
+        },
+        initColor: function(color){
+            context.fillStyle   = color;
+            context.strokeStyle = color;
         },
         mouseMove: function(evt) {
             if (this.drag) {
@@ -37,29 +42,9 @@ define(function(require) {
             this.drag = false;
             context.beginPath();
         },
-        
-    };
-       
-    var colors = document.getElementById('colors').childNodes;
-    for (var i = 0, color; color = colors[i]; i++) {
-        if (color.nodeName.toLowerCase() != 'div') continue;
-        color.addEventListener('click', function (e) {
-            var style = e.target.getAttribute('style');
-            var color = style.match(/background:(#......)/)[1];
-            context.strokeStyle = color;
-            context.fillStyle = color;
-        },false);
-    };
 
-    var sizes= document.getElementById('sizes').childNodes;
-    for (var i = 0, size; size = sizes[i]; i++){
-        if (size.nodeName.toLowerCase() != 'div') continue;
-        size.addEventListener('click', function(e){
-            var size = e.currentTarget.getAttribute('data-size');
-            context.lineWidth = size;
-        }, false);
     };
-          
+                 
 
    return draw;
 });
