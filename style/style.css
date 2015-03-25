@@ -7,10 +7,6 @@ body {
     /*float: left;*/
 }
 
-/*li {
-    list-style: none;
-}
-*/
 #selector {
     margin: 0px;
     padding: inherit;
@@ -23,19 +19,55 @@ body {
     zoom: 1;
 }*/
 
-.main{
-    display: inline-block;
-    width: 800px;
+video{
+    width: 200px;
+    height: 200px;
+    border: #000000 1px dotted;
 }
 
-.box{
+#tools{
+    
+    padding: 5px;
+}
+
+.main{
+    
+    overflow: hidden;
+    zoom: 1;
+    margin: 0 0 35px;
+}
+
+.main .box01{
     display: inline-block;
+    width: 600px;
+    float: left;
+    margin-right: 20px;
+}
+
+.main .box02{
+    display: inline-block;
+    width: 400px
+    float: right;
+}
+
+/*.box01{
+    display: inline-block;
+    float: left;
     margin: 0px;
     padding:0px;
     vertical-align: text-top;
     margin-right: 20px;
 }
 
+.box02{
+    display: inline-block;
+    float: right;
+    margin: 0px;
+    padding:0px;
+    vertical-align: text-top;
+    
+}
+*/
 .main ul{
     margin: 0;
     padding: 0;
@@ -47,6 +79,39 @@ body {
     margin: 0 0 5px;
     padding: 0;
 }
+
+.tool{
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+
+button{
+    background-color:#c98f8f;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    width: 50px;
+    border-radius:2px;
+    border:none;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Verdana;
+    font-size:13px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #2f6627;
+}
+.myButton:hover {
+    background-color:#5cbf2a;
+}
+.myButton:active {
+    position:relative;
+    top:1px
+}
+
+
 
 button:hover{
     color: hotpink;
