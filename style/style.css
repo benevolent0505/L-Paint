@@ -7,7 +7,9 @@ body {
 }
 
 #selector {
+    margin: 0px;
     padding: inherit;
+    
 }
 /*
 .main{
@@ -23,6 +25,7 @@ video{
 }
 
 #tools{
+    
     padding: 5px;
 }
 
@@ -65,18 +68,22 @@ video{
 }
 */
 .main ul{
+    margin: 0;
+    padding: 0;
     list-style: none;
     list-style-position: outside;
 }
 
 .main ul li{
     margin: 0 0 5px;
+    padding: 0;
 }
 
 .tool{
     display: inline-block;
     vertical-align: text-top;
 }
+
 
 button{
     background-color:#c98f8f;
@@ -96,12 +103,14 @@ button{
     text-shadow:0px 1px 0px #2f6627;
 }
 
+
 button:hover{
     color: hotpink;
 }
 
 #colors{
     display: inline-block;
+    padding: 0px;
 }
 
 #colors .color{
@@ -117,6 +126,7 @@ button:hover{
 
 #sizes{
     display: inline-block;
+    padding: 0px;
     margin-bottom: 10px;
 }
 
