@@ -14,8 +14,10 @@ define(function(require) {
 
     var canvas = init.getCanvas();
     var context = init.getContext();
-    var fillColor = '#000000';
+    
     var fillButton = document.getElementById('fill');
+    
+    var fillColor = '#000000';
     var fillFlag = false;
 
     // canvasに対する操作
