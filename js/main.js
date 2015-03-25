@@ -14,12 +14,21 @@ define(function(require) {
 
     var canvas = init.getCanvas();
     var context = init.getContext();
+    
+    var fillButton = document.getElementById('fill');
+    
+    var fillColor = '#000000';
+    var fillFlag = false;
 
     // canvasに対する操作
     // draw関係
-    canvas.addEventListener('mousedown', function() {
+    canvas.addEventListener('mousedown', function(e) {
+        if(fillFlag){
+            fill.fillArea(e.clientX, e.clientY, fillColor);
+        }else{
         draw.mouseDown();
-    });
+        }
+    },false);
     canvas.addEventListener('mousemove', function(e) {
         draw.mouseMove(e);
     });
@@ -36,6 +45,7 @@ define(function(require) {
             var style = e.target.getAttribute('style');
             var color = style.match(/background:(#......)/)[1];
             draw.changeColor(color);
+            fillColor = color;
         },false);
     });
 
@@ -47,4 +57,12 @@ define(function(require) {
             draw.changeLineWidth(size);
         }, false);
     });
+
+    fillButton.addEventListener('click', function(){
+        if(fillFlag){
+            fillFlag = false;
+        } else{
+            fillFlag = true;
+        }
+    }, false);
 });
