@@ -1,5 +1,6 @@
 define(function(require) {
     var init = require('init');
+    init.initBackGround();
 
     var draw = require('./draw');
     var fill = require('./fill');
