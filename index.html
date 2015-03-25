@@ -9,14 +9,16 @@
   <body>
       <div class="main">
 
-        <div class="box">
+        <div class="box01">
           <canvas id="canvas" width="600", height="400"></canvas>
         </div>
 
-        <div class="box">
+        <div class="box02">
+          
+          <video id="chat">video</video>
+          
 
-          <p id="display">何かを表示</p>
-
+         
           <div id="tools">
 
               <div id="colors">
@@ -35,19 +37,24 @@
                 <div class="size" data-size="10"><div style="width:10px;height:10px;"></div></div>
             </div>
 
-          </div>
+          
           <div id="selector">
             <ul>
+              <div class="tool">
               <li><button id="draw">draw</button></li>
-              <li><button id="erase">eraser</button></li>
+              <li><button id="erase">erase</button></li>
               <li><button id="fill">fill</button></li>
-              <li><button id="select-area">select area</button></li>
+              </div>
+              <div class="tool">
+              <li><button id="select-area">select</button></li>
               <li><button id="copy">copy</button></li>
               <li><button id="paste">paste</button></li>
-              <li><button id="load-image">load image</button></li>
+              <li><button id="load-image">load</button></li>
+              </div>
             </ul>
           </div>
         </div>
+      </div>
       </div>
   </body>
 </html>
