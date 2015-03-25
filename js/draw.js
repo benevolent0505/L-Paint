@@ -18,12 +18,7 @@ define(function(require) {
         radius: 5,
 
         mouseDown: function() {
-            this.initColor = ('#000000')
             this.drag = true;
-        },
-        initColor: function(color){
-            context.fillStyle   = color;
-            context.strokeStyle = color;
         },
         mouseMove: function(evt) {
             if (this.drag) {
@@ -41,6 +36,14 @@ define(function(require) {
         mouseUp: function() {
             this.drag = false;
             context.beginPath();
+        },
+        changeColor: function(color){
+            context.fillStyle   = color;
+            context.strokeStyle = color;
+        },
+        changeLineWidth: function(width){
+            this.radius = width / 2;
+            context.lineWidth = width;
         },
 
     };

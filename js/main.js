@@ -23,26 +23,25 @@ define(function(require) {
         draw.mouseUp();
     });
 
+   
+    var forEach = Array.prototype.forEach;
+
     //線の色を変える処理
     var colors = document.getElementById('colors').childNodes;
-    for (var i = 0, color; color = colors[i]; i++) {
-        if (color.nodeName.toLowerCase() != 'div') continue;
-        color.addEventListener('click', function (e) {
+    forEach.call(colors, function(node) {
+        node.addEventListener('click', function (e) {
             var style = e.target.getAttribute('style');
             var color = style.match(/background:(#......)/)[1];
-            context.strokeStyle = color;
-            context.fillStyle = color;
+            draw.changeColor(color);
         },false);
-    };
+    });
 
     //線の太さを変える処理
     var sizes = document.getElementById('sizes').childNodes;
-    for (var i = 0, size; size = sizes[i]; i++){
-        if (size.nodeName.toLowerCase() != 'div') continue;
-        size.addEventListener('click', function(e){
+    forEach.call(sizes, function(node){
+        node.addEventListener('click', function(e){
             var size = e.currentTarget.getAttribute('data-size');
-            context.lineWidth = size;
-            draw.radius = size/2;
+            draw.changeLineWidth(size);
         }, false);
-    };
+    });
 });
