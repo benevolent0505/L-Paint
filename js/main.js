@@ -3,10 +3,13 @@ define(function(require) {
 
     var draw = require('./draw');
     var fill = require('./fill');
+
     var selectArea = require('./selectArea');
     var copy = require('./copy');
     var paste = require('./paste');
     var loadImage = require('./loadImage');
+
+    var video = require('./video');
 
     var canvas = init.getCanvas();
     var context = init.getContext();
@@ -23,7 +26,6 @@ define(function(require) {
         draw.mouseUp();
     });
 
-   
     var forEach = Array.prototype.forEach;
 
     //線の色を変える処理
