@@ -14,9 +14,9 @@ define(function(require) {
 
     var canvas = init.getCanvas();
     var context = init.getContext();
-    
+
     var fillButton = document.getElementById('fill');
-    
+
     var fillColor = '#000000';
     var fillFlag = false;
 
@@ -24,7 +24,7 @@ define(function(require) {
     // draw関係
     canvas.addEventListener('mousedown', function(e) {
         if(fillFlag){
-            fill.fillArea(e.clientX, e.clientY, fillColor);
+            fill.fillArea(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop, fillColor);
         }else{
         draw.mouseDown();
         }
