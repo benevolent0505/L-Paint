@@ -7,6 +7,9 @@ define(function(require) {
     var canvas = init.getCanvas();
     var context = init.getContext();
 
+    var offsetTop = canvas.offsetTop;
+    var offsetLeft = canvas.offsetLeft;
+
     // 線の太さと色の初期化
     context.fillStyle = '#000000';
     context.strokeStyle = '#000000';
@@ -22,15 +25,15 @@ define(function(require) {
         },
         mouseMove: function(evt) {
             if (this.drag) {
-                context.lineTo(evt.clientX-6, evt.clientY-6);
+                context.lineTo(evt.clientX-offsetLeft, evt.clientY-offsetTop);
                 context.stroke();
 
                 context.beginPath();
-                context.arc(evt.clientX-6, evt.clientY-6, this.radius, 0, 2 * Math.PI);
+                context.arc(evt.clientX-offsetLeft, evt.clientY-offsetTop, this.radius, 0, 2 * Math.PI);
                 context.fill();
 
                 context.beginPath();
-                context.moveTo(evt.clientX-6, evt.clientY-6);
+                context.moveTo(evt.clientX-offsetLeft, evt.clientY-offsetTop);
             }
         },
         mouseUp: function() {
@@ -44,10 +47,8 @@ define(function(require) {
         changeLineWidth: function(width){
             this.radius = width / 2;
             context.lineWidth = width;
-        },
-
+        }
     };
-                 
 
    return draw;
 });
