@@ -38,6 +38,19 @@ define(function(require) {
 
     var forEach = Array.prototype.forEach;
 
+    // 選択中のボタンを目立たせる
+    var controls = document.getElementById('control').children;
+    forEach.call(controls, function(element) {
+      element.firstChild.addEventListener('click', function(e) {
+        forEach.call(controls, function(ele) {
+          ele.classList.remove('pure-menu-selected');
+        });
+
+        element.classList.add('pure-menu-selected');
+    }, false);
+});
+
+
     //線の色を変える処理
     var colors = document.getElementById('colors').childNodes;
     forEach.call(colors, function(node) {
