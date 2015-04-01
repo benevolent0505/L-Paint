@@ -29,19 +29,16 @@
 
       <div id="menu">
         <div class="pure-menu">
-          <button id="draw">Draw</button>
-
-          <ul class="pure-menu-list">
+          <div class="pure-menu">
+          <ul class="pure-menu-list" id="control">
+            <li class="pure-menu-item"><button id="draw">Draw</button></li>
             <li class="pure-menu-item"><button id="erase">Erase</button></li>
             <li class="pure-menu-item"><button id="fill">Fill</button></li>
-
-            <li class="pure-menu-item" class="menu-item-divided pure-menu-selected">
-              <button id="select-area">Select</button>
-            </li>
-
+            <li class="pure-menu-item"><button id="select-area">Select</button></li>
             <li class="pure-menu-item"><button id="copy">Copy</button></li>
             <li class="pure-menu-item"><button id="paste">Paste</button></li>
           </ul>
+        </div>
         </div>
         <div id="colors">
           <div class="color" style="background:#2b2b2b"></div>

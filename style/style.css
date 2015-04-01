@@ -128,7 +128,7 @@ appears on the left side of the page.
         /*
         This styles a link within a selected menu item `<li>`.
         */
-       
+
 
     /*
     This styles the menu heading.
@@ -162,6 +162,10 @@ button{
 
 button:hover{
     color: aliceblue;
+}
+
+.pure-menu-selected {
+  color: aliceblue;
 }
 
 #colors{
@@ -254,4 +258,3 @@ Hides the menu at `48em`, but modify this based on your app's needs.
         left: 150px;
     }
 }
-
