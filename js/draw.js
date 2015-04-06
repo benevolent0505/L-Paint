@@ -47,6 +47,39 @@ define(function(require) {
         changeLineWidth: function(width){
             this.radius = width / 2;
             context.lineWidth = width;
+        },
+        drawByOther: function(x, y, color, mode) {
+          var tmpColor = context.fillStyle;
+
+          context.fillStyle = color;
+          context.strokeStyle = color;
+
+          switch (mode) {
+            case 'down':
+              this.drag = true;
+              break;
+            case 'move':
+              if (this.drag) {
+                context.lineTo(x-offsetLeft, y-offsetTop);
+                context.stroke();
+
+                context.beginPath();
+                context.arc(x-offsetLeft, y-offsetTop, this.radius, 0, 2 * Math.PI);
+                context.fill();
+
+                context.beginPath();
+                context.moveTo(x-offsetLeft, y-offsetTop);
+              }
+
+              break;
+            case 'up':
+              this.drag = false;
+              context.beginPath();
+              break;
+          }
+
+          context.fillStyle = tmpColor;
+          context.strokeStyle = tmpColor;
         }
     };
 
