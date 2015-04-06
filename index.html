@@ -15,9 +15,12 @@
             <![endif]-->
     <!--[if gt IE 8]><!-->
     <link rel="stylesheet" href="./style/style.css">
-    <script data-main="./app" src="./require.js"></script>
+
+
 
     <!--<![endif]-->
+    <script data-main="./app" src="./require.js"></script>
+    <script src="https://skyway.io/dist/0.3/peer.js"></script>
   </head>
   <body>
     <div id="layout">
@@ -71,8 +74,8 @@
          <div class="pure-u-1-2">
            <h2 class="content-subhead">Video</h2>
            <div id="video-chat">
-             <video id="dest-video" width="320" height="240"></video>
-             <video id="my-video" width="120" height="90"></video>
+             <video id="dest-video" width="320" height="240" autoplay></video>
+             <video id="my-video" width="120" height="90" autoplay></video>
            </div>
            <p>Your id is <span id="my-id"></span></p>
            <button id="load-media" class="pure-button-primary pure-button">Load Media</button>
