@@ -57,69 +57,32 @@
         </div>
       </div>
       <div class="content">
-        <div id="main" class="pure-g">
-          <!-- <div class="header">
-               <!--<h1>Lightning Paint</h1>
-               <h2>A subtitle for your page goes here</h2>-->
+       <div id="main" class="pure-g">
+         <!-- <div class="header">
+              <!--<h1>Lightning Paint</h1>
+              <h2>A subtitle for your page goes here</h2>-->
 
-<<<<<<< Updated upstream
-          <div class="pure-u-1-2">
-            <h2 class="content-subhead">Canvas</h2>
+         <div class="pure-u-1-2">
+           <h2 class="content-subhead">Canvas</h2>
 
-            <canvas id="canvas" width=400, height="400"></canvas>
-          </div>
-          <div class="pure-u-1-2">
-            <h2 class="content-subhead">Video</h2>
-            <video id="chat" width="320" height="240"></video>
-            <input type="text" id="dest-id">
-            <button id="call">Call</button>
-            <button id="end">End</button>
-=======
-        <div class="box02">
-          
-          <video id="chat" autoplay="1">video</video>
-          
+           <canvas id="canvas" width="400" height="400"></canvas>
+         </div>
 
-         
-          <div id="tools">
+         <div class="pure-u-1-2">
+           <h2 class="content-subhead">Video</h2>
+           <div id="video-chat">
+             <video id="dest-video" width="320" height="240"></video>
+             <video id="my-video" width="120" height="90"></video>
+           </div>
+           <p>Your id is <span id="my-id"></span></p>
+           <button id="load-media" class="pure-button-primary pure-button">Load Media</button>
+           <input type="text" id="dest-id" placeholder="Input destination ID">
+           <button id="call">Call</button>
+           <button id="end">End</button>
+         </div>
 
-              <div id="colors">
-                  <div class="color" style="background:#2b2b2b"></div>
-                  <div class="color" style="background:#f5b199"></div>
-                  <div class="color" style="background:#ffdb4f"></div>
-                  <div class="color" style="background:#ccffcc"></div>
-                  <div class="color" style="background:#cc88df"></div>
-              </div>
-              <br>
-              <div id="sizes">
-                <div class="size" data-size="1"><div style="width:1px;height:1px;"></div></div>
-                <div class="size" data-size="2"><div style="width:2px;height:2px;"></div></div>
-                <div class="size" data-size="3"><div style="width:3px;height:3px;"></div></div>
-                <div class="size" data-size="5"><div style="width:5px;height:5px;"></div></div>
-                <div class="size" data-size="10"><div style="width:10px;height:10px;"></div></div>
-            </div>
-
-          
-          <div id="selector">
-            <ul>
-              <div class="tool">
-              <li><button id="draw">draw</button></li>
-              <li><button id="erase">erase</button></li>
-              <li><button id="fill">fill</button></li>
-              </div>
-              <div class="tool">
-              <li><button id="select-area">select</button></li>
-              <li><button id="copy">copy</button></li>
-              <li><button id="paste">paste</button></li>
-              <li><button id="load-image">load</button></li>
-              </div>
-            </ul>
->>>>>>> Stashed changes
-          </div>
-
-        </div>
-      </div>
-
+       </div>
+     </div>
       <script src="js/ui.js"></script>
   </body>
 </html>
