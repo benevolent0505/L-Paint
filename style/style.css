@@ -10,6 +10,23 @@ body {
     color: #777;
 }
 
+#video-chat {
+    position: relative;
+    width: 320px;
+}
+
+//#dest-video {
+    width: 100%;
+    height: 100%;
+}
+
+#my-video {
+    position: absolute;
+    top: 150px;
+    left: 200px;
+    
+}
+
 /*
 Add transition to containers so they can push in and out.
 */

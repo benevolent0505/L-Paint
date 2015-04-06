@@ -65,15 +65,20 @@
           <div class="pure-u-1-2">
             <h2 class="content-subhead">Canvas</h2>
 
-            <canvas id="canvas" width=400, height="400"></canvas>
+
+            <canvas id="canvas" width="400" height="400"></canvas>
           </div>
           <div class="pure-u-1-2">
             <h2 class="content-subhead">Video</h2>
-            <video id="chat" width="320" height="240"></video>
+              <div id="video-chat">
+                <video id="dest-video" width="320" height="240"></video>
+                <video id="my-video" width="120" height="90"></video>
+              </div>
             <input type="text" id="dest-id">
             <button id="call">Call</button>
             <button id="end">End</button>
           </div>
+
 
         </div>
       </div>
