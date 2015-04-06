@@ -1,30 +1,33 @@
 define(function(require) {
+    // 初期化
     var init = require('init');
     init.initBackGround();
 
-    var draw = require('./draw');
-    var fill = require('./fill');
-
-    var selectArea = require('./selectArea');
-    var copy = require('./copy');
-    var paste = require('./paste');
-    var loadImage = require('./loadImage');
-
-    var video = require('./video');
-
     var canvas = init.getCanvas();
     var context = init.getContext();
-    
+
+    var draw = require('./draw');
+    var fill = require('./fill');
+    var video = require('./video');
+
+
+    // UIオブジェクト
     var fillButton = document.getElementById('fill');
-    
+
+
     var fillColor = '#000000';
     var fillFlag = false;
+
+
+    // NodeListにforEachを付与するため
+    var forEach = Array.prototype.forEach;
+
 
     // canvasに対する操作
     // draw関係
     canvas.addEventListener('mousedown', function(e) {
         if(fillFlag){
-            fill.fillArea(e.clientX, e.clientY, fillColor);
+            fill.fillArea(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop, fillColor);
         }else{
         draw.mouseDown();
         }
@@ -35,8 +38,6 @@ define(function(require) {
     canvas.addEventListener('mouseup', function() {
         draw.mouseUp();
     });
-
-    var forEach = Array.prototype.forEach;
 
     //線の色を変える処理
     var colors = document.getElementById('colors').childNodes;
@@ -58,6 +59,7 @@ define(function(require) {
         }, false);
     });
 
+    // 塗りつぶしの切替
     fillButton.addEventListener('click', function(){
         if(fillFlag){
             fillFlag = false;
@@ -65,4 +67,17 @@ define(function(require) {
             fillFlag = true;
         }
     }, false);
+
+
+    // 選択中のボタンを目立たせる
+    var controls = document.getElementById('control').children;
+    forEach.call(controls, function(element) {
+      element.firstChild.addEventListener('click', function(e) {
+        forEach.call(controls, function(ele) {
+          ele.classList.remove('pure-menu-selected');
+        });
+
+        element.classList.add('pure-menu-selected');
+    }, false);
+    });
 });
