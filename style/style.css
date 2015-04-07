@@ -3,11 +3,17 @@ canvas{
 }
 
 video{
-    border: #000000 1px solid;
+    border: #333 1px solid;
+    transform: scaleX(-1);
 }
 
 body {
     color: #777;
+}
+
+#name{
+    margin-top: 25px;
+    margin-bottom: 5px;
 }
 
 #video-chat {
@@ -25,6 +31,83 @@ body {
     top: 150px;
     left: 200px;
     
+}
+
+#my-name{
+    width: 95px;
+    margin-left: 4px; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+p{
+    color: #333;
+}
+
+/*
+icon
+*/
+
+.icono-user{
+    color: aqua;
+    transform: scale(0.8);
+}
+
+.icono-caretRightCircle{
+    transform: scale(0.8);
+}
+
+.icono-caretRightCircle:hover{
+    cursor: pointer;
+}
+
+.icono-caretRightCircle:active{
+    color: aqua;
+    transform: scale(0.9)
+}
+
+.fa-video-camera{
+    margin: 10px 20px 10px 10px;
+    transform: scale(2);
+    color: darksalmon;
+}
+
+.fa-video-camera:active{
+    color: #aaa;
+    transform: scale(2.3);
+}
+
+.fa-video-camera:hover{
+    cursor: pointer;
+}
+
+.fa-phone{
+    transform: scale(2);
+    margin: 10px;
+    color: aquamarine;
+}
+
+.fa-phone:active{
+    transform: scale(2.3);
+    color: #aaa;
+}
+
+.fa-phone:hover{
+    cursor: pointer;
+}
+
+#end{
+    transform: rotate(135deg)scale(2);
+    color: deeppink;
+}
+
+#end:active{
+    transform: scale(2.3)rotate(135deg);
+    color: #aaa;
+}
+
+#end:hover{
+    cursor: pointer;
 }
 
 /*
@@ -179,6 +262,7 @@ button{
 
 button:hover{
     color: aliceblue;
+    cursor: pointer;
 }
 
 .pure-menu-selected {
