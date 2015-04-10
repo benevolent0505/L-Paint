@@ -42,8 +42,11 @@ define(function(require) {
   });
 
   // Debug用途
-  showPeers();
-
+  peer.listAllPeers(function(list) {
+    list.forEach(function(p) {
+      console.log(p);
+    });
+  });
 
   // canvasに対する操作
   // draw関係
@@ -237,12 +240,5 @@ define(function(require) {
     peer.disconnect();
     dataConnection = '';
     destId = '';
-  };
-  var showPeers = function() {
-    peer.listAllPeers(function(list) {
-      list.forEach(function(p) {
-        console.log(p);
-      });
-    });
   };
 });
