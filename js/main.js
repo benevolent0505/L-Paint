@@ -18,6 +18,7 @@ define(function(require) {
   var media = new Media();
 
   // UIオブジェクト
+  var drawButton = document.getElementById('draw');
   var fillButton = document.getElementById('fill');
   var clear = document.getElementById('clear');
 
@@ -223,12 +224,11 @@ define(function(require) {
   });
 
   // 塗りつぶしの切替
+  drawButton.addEventListener('click', function() {
+    fillFlag = false;
+  }, false);
   fillButton.addEventListener('click', function(){
-    if(fillFlag){
-      fillFlag = false;
-    } else{
-      fillFlag = true;
-    }
+    fillFlag = fillFlag ? false : true;
   }, false);
 
 
