@@ -19,6 +19,8 @@ define(function(require) {
 
   // UIオブジェクト
   var fillButton = document.getElementById('fill');
+  var clear = document.getElementById('clear');
+
 
   // 変数宣言
   var KEY = '59a484aa-de27-4986-b1f0-91d0a604f936';
@@ -190,6 +192,10 @@ define(function(require) {
       reset();
     }, false);
 
+
+  clear.addEventListener('click', function() {
+    draw.clear();
+  }, false);
 
   //線の色を変える処理
   var colors = document.getElementById('colors').childNodes;
