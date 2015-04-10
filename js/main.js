@@ -20,6 +20,7 @@ define(function(require) {
   // UIオブジェクト
   var drawButton = document.getElementById('draw');
   var fillButton = document.getElementById('fill');
+  var eraseButton = document.getElementById('erase');
   var clear = document.getElementById('clear');
 
 
@@ -223,12 +224,17 @@ define(function(require) {
     }, false);
   });
 
-  // 塗りつぶしの切替
+  // Controls系
   drawButton.addEventListener('click', function() {
     fillFlag = false;
+    draw.changeColor('#000000');
   }, false);
   fillButton.addEventListener('click', function(){
     fillFlag = fillFlag ? false : true;
+  }, false);
+  eraseButton.addEventListener('click', function() {
+    fillFlag = false;
+    draw.changeColor('#FFFFFF');
   }, false);
 
 
