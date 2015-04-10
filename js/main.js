@@ -195,6 +195,9 @@ define(function(require) {
 
   clear.addEventListener('click', function() {
     draw.clear();
+    if (dataConnection) {
+      dataConnection.send({type: 'clear'});
+    }
   }, false);
 
   //線の色を変える処理
