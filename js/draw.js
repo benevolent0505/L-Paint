@@ -9,30 +9,34 @@ define(function(require) {
     this.offsetTop = canvas.offsetTop,
     this.offsetLeft = canvas.offsetLeft,
     this.drag = false,
-    this.radius = 5,
+    this.lock = false,
     this.context.fillStyle = '#000000',
     this.context.strokeStyle = '#000000',
-    this.context.lineWidth = this.radius * 2
+    this.context.lineWidth = 10,
+    this.context.lineCap = 'round'
   };
 
   Draw.prototype.clear = function() {
     this.context.fillStyle = 'rgba(255, 255, 255, 1.0)';
     this.context.fillRect(0, 0, this.width, this.height);
     this.drag = false;
-    this.radiis = 5;
+    this.lock = false;
     this.context.fillStyle = '#000000';
     this.context.strokeStyle = '#000000';
-    this.context.lineWidth = this.radius * 2;
+    this.context.lineWidth = 10;
+    this.context.lineCap = 'round';
   };
 
   Draw.prototype.mouseDown = function(x, y) {
-    this.drag = true;
-    this.startX = x - this.offsetLeft;
-    this.startY = y - this.offsetTop;
+    if (!this.lock) {
+      this.drag = true;
+      this.startX = x - this.offsetLeft;
+      this.startY = y - this.offsetTop;
+    }
   };
 
   Draw.prototype.mouseMove = function(x, y) {
-    if (this.drag) {
+    if (this.drag && !this.lock) {
       this.endX = x - this.offsetLeft;
       this.endY = y - this.offsetTop;
 
@@ -48,7 +52,7 @@ define(function(require) {
   };
 
   Draw.prototype.mouseUp = function() {
-    if (this.drag) {
+    if (this.drag && !this.lock) {
       this.drag = false;
     }
   };
@@ -57,23 +61,56 @@ define(function(require) {
     this.drag = false;
   };
 
-  Draw.prototype.erase = function(x, y) {};
+  Draw.prototype.changeLineWidth = function(width) {
+    this.context.lineWidth = width;
+  };
 
-  Draw.prototype.drawOther = function(type, x, y) {
+  Draw.prototype.changeColor = function(color) {
+    this.context.fillStyle = color;
+    this.context.strokeStyle = color;
+  };
+
+  Draw.prototype.drawByOther = function(type, x, y, color, width) {
+    var tmpColor = this.context.fillStyle;
+    var tmpWidth = this.context.lineWidth;
+
+    this.context.fillStyle = color;
+    this.context.strokeStyle = color;
+    this.context.lineWidth = width;
+
     switch (type) {
       case 'down':
-        this.mouseDown();
+        this.lock = true;
+        this.startX = x - this.offsetLeft;
+        this.startY = y - this.offsetTop;
         break;
       case 'move':
-        this.mouseMove(x ,y);
+        if (this.lock) {
+          this.endX = x - this.offsetLeft;
+          this.endY = y - this.offsetTop;
+
+          this.context.beginPath();
+          this.context.moveTo(this.startX, this.startY);
+          this.context.lineTo(this.endX, this.endY);
+          this.context.stroke();
+
+          this.startX = this.endX;
+          this.startY = this.endY;
+        }
         break;
       case 'up':
-        this.mouseUp();
+        if (this.lock) {
+          this.lock = false;
+        }
         break;
       case 'out':
-        this.mouseOut();
+        this.lock = false;
         break;
     }
+
+    this.context.fillStyle = tmpColor;
+    this.context.strokeStyle = tmpColor;
+    this.context.lineWidth = tmpWidth;
   };
 
   return Draw;
