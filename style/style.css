@@ -11,6 +11,11 @@ body {
     color: #777;
 }
 
+.pure-u-1-2{
+    height: 550px;
+    width: 410px;
+}
+
 #name{
     margin-top: 25px;
     margin-bottom: 5px;
@@ -30,7 +35,16 @@ body {
     position: absolute;
     top: 150px;
     left: 200px;
-    
+}
+
+#dest-name{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color:#fff;
+    color: #000;
+    padding: 2px 5px;
+    border-radius: 5px;
 }
 
 #my-name{
@@ -68,8 +82,7 @@ icon
 
 .fa-trash-o{
     transform: scale(2.5);
-    margin: 25px;
-    float: right;
+    margin: 10px;
 }
 
 .fa-trash-o:hover{
