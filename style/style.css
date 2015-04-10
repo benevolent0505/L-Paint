@@ -66,6 +66,18 @@ icon
     transform: scale(0.9)
 }
 
+.fa-trash-o{
+    transform: scale(2.5);
+    margin: 25px;
+    float: right;
+}
+
+.fa-trash-o:hover{
+    transform: scale(2.8);
+    cursor: pointer;
+    color: #aaa;
+}
+
 .fa-video-camera{
     margin: 10px 20px 10px 10px;
     transform: scale(2);
