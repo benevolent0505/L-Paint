@@ -211,7 +211,7 @@ define(function(require) {
     fillFlag = false;
     eraseFlag = false;
     var nowColor = modelControl.style.background;
-    var nowWidth = parseInt(modelControl.style.width.split(0, 2), 10);
+    var nowWidth = parseInt(modelControl.style.width.slice(0, 2), 10);
     //nowWidth = parseInt(nowWidth, 10);
 
     draw.changeColor(nowColor);
