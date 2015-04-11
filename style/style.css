@@ -9,6 +9,40 @@ video{
 
 body {
     color: #777;
+    width: 100%;
+}
+
+/*
+modal contents
+*/
+
+#modal-content{
+    width: 50%;
+    margin: 0 auto;
+    padding: 30px 20px;
+    border: 2px solid #aaa;
+    background: #fff;
+    position: fixed;
+    z-index: 3;
+    text-align: center;
+    top: 30%;
+    left: 25%;
+    
+}
+
+#message{
+    color: red;
+    display: none;
+}
+
+#modal-overlay{
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background-color: rgba(0,0,0,0.75);
 }
 
 .pure-u-1-2{
@@ -16,9 +50,9 @@ body {
     width: 410px;
 }
 
-#name{
-    margin-top: 25px;
-    margin-bottom: 5px;
+#my-id{
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 #video-chat {
@@ -49,10 +83,7 @@ body {
 }
 
 #my-name{
-    width: 95px;
-    margin-left: 4px; 
-    margin-top: 10px;
-    margin-bottom: 10px;
+
 }
 
 p{
@@ -74,11 +105,12 @@ icon
 
 .icono-caretRightCircle:hover{
     cursor: pointer;
+    color: aqua;
+    transform: scale(0.9);
 }
 
 .icono-caretRightCircle:active{
-    color: aqua;
-    transform: scale(0.9)
+    transform: scale(0.8);
 }
 
 .fa-trash-o{
@@ -92,19 +124,25 @@ icon
     color: #aaa;
 }
 
+.fa-trash-o:active{
+    transform: scale(2.5);
+}
+
+
 .fa-video-camera{
     margin: 10px 20px 10px 10px;
     transform: scale(2);
-    color: darksalmon;
-}
-
-.fa-video-camera:active{
-    color: #aaa;
-    transform: scale(2.3);
+    color: orange;
 }
 
 .fa-video-camera:hover{
     cursor: pointer;
+    color: darkorange;
+    transform: scale(2.3);
+}
+
+.fa-video-camera:active{
+    transform: scale(2);
 }
 
 .fa-phone{
@@ -113,28 +151,32 @@ icon
     color: aquamarine;
 }
 
-.fa-phone:active{
-    transform: scale(2.3);
-    color: #aaa;
-}
-
 .fa-phone:hover{
     cursor: pointer;
+    transform: scale(2.3);
+    color: #0aa;
+}
+
+.fa-phone:active{
+    transform: scale(2)
 }
 
 #end{
     transform: rotate(135deg)scale(2);
-    color: deeppink;
-}
-
-#end:active{
-    transform: scale(2.3)rotate(135deg);
-    color: #aaa;
+    color: hotpink;
 }
 
 #end:hover{
     cursor: pointer;
+    transform: scale(2.3)rotate(135deg);
+    color: deeppink;
 }
+
+#end:active{
+    transform: scale(2)rotate(135deg);
+}
+
+
 
 /*
 Add transition to containers so they can push in and out.
@@ -219,7 +261,7 @@ appears on the left side of the page.
     top: 0;
     left: 0;
     bottom: 0;
-    z-index: 1000; /* so the menu or its navicon stays above all content */
+    z-index: 1; /* so the menu or its navicon stays above all content */
     background: #191818;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;

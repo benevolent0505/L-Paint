@@ -23,7 +23,20 @@
     <script src="https://skyway.io/dist/0.3/peer.js"></script>
   </head>
   <body>
+    
     <div id="layout">
+        
+        <!--ここから名前登録-->
+        <div id="modal-content">
+            <p>Enter your user name.</p>
+            <input type="text" id="my-name" placeholder="Your Name">
+            <div class="icono-caretRightCircle"></div>
+            <p></p>
+            <div id="message">The name you have entered is not unique.</div>
+        </div>
+        <!--ここまで名前登録-->
+        
+        <div id="modal-overlay"></div>
       <!-- Menu toggle -->
       <a href="#menu" id="menuLink" class="menu-link">
         <!-- Hamburger icon -->
@@ -34,23 +47,17 @@
 
         <div class="pure-menu">
 
-          <div id="name" class="icono-user"></div>
-            <br>
-          <input type="text" id="my-name" placeholder="Your Name">
-          <div class="icono-caretRightCircle"></div>
-
+          <div id="my-id" class="icono-user"></div>
+            
           <div class="pure-menu">
               <ul class="pure-menu-list" id="control">
                 <li class="pure-menu-item"><button id="draw">Draw</button></li>
                 <li class="pure-menu-item"><button id="erase">Erase</button></li>
                 <li class="pure-menu-item"><button id="fill">Fill</button></li>
-                <li class="pure-menu-item"><button id="select-area">Select</button></li>
-                <li class="pure-menu-item"><button id="copy">Copy</button></li>
-                <li class="pure-menu-item"><button id="paste">Paste</button></li>
               </ul>
           </div>
         </div>
-
+          <br>
         <div id="colors">
           <div class="color" style="background:#2b2b2b"></div>
           <div class="color" style="background:#f5b199"></div>
@@ -91,9 +98,9 @@
                <div id="dest-name">name</div>
              <video id="my-video" width="120" height="90" autoplay></video>
            </div>
-             <p> Id : <span id="my-id"></span></p>
+            <br>
              <div class="fa fa-video-camera" id="load-media"></div>
-           <input type="text" id="dest-id" placeholder="Input destination ID">
+           <input type="text" id="dest-id" placeholder="Input destination name">
              <i class="fa fa-phone" id="call"></i>
              <i class="fa fa-phone" id="end"></i>
 
