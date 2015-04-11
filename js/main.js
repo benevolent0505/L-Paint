@@ -109,18 +109,6 @@ define(function(require) {
   }, false);
 
 
-  // 相手からcallしてきたときの処理
-  if (peer) {
-
-  }
-
-
-  // 向こうからのCanvansの更新
-  if (peer) {
-
-  }
-
-
   // 自分のカメラのロード
   document.getElementById('load-media')
     .addEventListener('click', function(){
