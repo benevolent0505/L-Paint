@@ -215,7 +215,6 @@ define(function(require) {
   // Controls系
   drawButton.addEventListener('click', function() {
     fillFlag = false;
-    draw.changeColor('#000000');
   }, false);
   fillButton.addEventListener('click', function(){
     fillFlag = fillFlag ? false : true;
