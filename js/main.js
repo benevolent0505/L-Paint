@@ -210,8 +210,12 @@ define(function(require) {
   drawButton.addEventListener('click', function() {
     fillFlag = false;
     eraseFlag = false;
-    var nowColor = document.getElementById('model-control').style.background;
+    var nowColor = modelControl.style.background;
+    var nowWidth = parseInt(modelControl.style.width.split(0, 2), 10);
+    //nowWidth = parseInt(nowWidth, 10);
+
     draw.changeColor(nowColor);
+    draw.changeLineWidth(nowWidth);
   }, false);
   fillButton.addEventListener('click', function(){
     fillFlag = fillFlag ? false : true;
