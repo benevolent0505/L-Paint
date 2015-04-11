@@ -1,24 +1,122 @@
 <!doctype html>
 <html lang="ja">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Lightning Paint</title>
-    <link xrel="stylesheet" href="./style/style.css">
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="http://saeedalipoor.github.io/icono/icono.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!--[if lte IE 8]>
+            <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
+            <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="./style/style.css">
+
+
+
+    <!--<![endif]-->
+    <script data-main="./app" src="./require.js"></script>
+    <script src="https://skyway.io/dist/0.3/peer.js"></script>
   </head>
   <body>
-    <canvas id="canvas" width="600", height="400"></canvas>
-    <p id="display">何かを表示</p>
-    <div id="selector">
-      <ul>
-        <li><button id="draw">draw</button></li>
-        <li><button id="erase">eraser</button></li>
-        <li><button id="fill">fill</button></li>
-        <li><button id="select-area">select area</button></li>
-        <li><button id="copy">copy</button></li>
-        <li><button id="paste">paste</button></li>
-        <li><button id="load-image">load image</button></li>
-      </ul>
-    </div>
-    <script src="./js/canvas.js"></script>
+
+    <div id="layout">
+
+        <!--ここから名前登録-->
+        <div id="modal-content">
+            <p>Enter your user name.</p>
+            <input type="text" id="my-name" placeholder="Your Name">
+            <div class="icono-caretRightCircle" id="get-name"></div>
+            <p></p>
+            <div id="message">The name you have entered is not unique.</div>
+        </div>
+        <!--ここまで名前登録-->
+
+        <div id="modal-overlay"></div>
+      <!-- Menu toggle -->
+      <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+      </a>
+
+      <div id="menu">
+
+        <div class="pure-menu">
+
+            <div class="icono-user"></div><div id="my-id"></div>
+
+          <div class="pure-menu">
+              <ul class="pure-menu-list" id="control">
+                <li class="pure-menu-item"><button id="draw">Draw</button></li>
+                <li class="pure-menu-item"><button id="erase">Erase</button></li>
+                <li class="pure-menu-item"><button id="fill">Fill</button></li>
+              </ul>
+          </div>
+        </div>
+          <br>
+        <div id="colors">
+          <div class="color" style="background:#2b2b2b"></div>
+          <div class="color" style="background:#f5b199"></div>
+          <div class="color" style="background:#ffdb4f"></div>
+          <div class="color" style="background:#ccffcc"></div>
+          <div class="color" style="background:#cc88df"></div>
+        </div>
+
+        <br>
+
+        <div id="sizes">
+          <div class="size" data-size="1"><div style="width:1px;height:1px;"></div></div>
+          <div class="size" data-size="2"><div style="width:2px;height:2px;"></div></div>
+          <div class="size" data-size="3"><div style="width:3px;height:3px;"></div></div>
+          <div class="size" data-size="5"><div style="width:5px;height:5px;"></div></div>
+          <div class="size" data-size="10"><div style="width:10px;height:10px;"></div></div>
+        </div>
+
+        <div id="model">
+            <div class="model1">now :</div>
+            <div class="model_size">
+            <!--大きさはと色は次のstyleです-->
+            <div style="width:10px;height:10px;background:#000000" id="model-control"></div></div>
+        </div>
+
+      </div>
+
+      <div class="content">
+       <div id="main" class="pure-g">
+         <!-- <div class="header">
+              <!--<h1>Lightning Paint</h1>
+              <h2>A subtitle for your page goes here</h2>-->
+
+         <div class="pure-u-1-2">
+           <h2 class="content-subhead">Canvas</h2>
+
+           <canvas id="canvas" width="400" height="400"></canvas>
+            <div class="fa fa-trash-o" id="clear"></div>
+         </div>
+
+         <div class="pure-u-1-2">
+           <h2 class="content-subhead">Video</h2>
+           <div id="video-chat">
+             <video id="dest-video" width="320" height="240" autoplay></video>
+               <div id="dest-name"></div>
+             <video id="my-video" width="120" height="90" autoplay></video>
+           </div>
+            <br>
+             <div class="fa fa-video-camera" id="load-media"></div>
+           <input type="text" id="dest-id" placeholder="Input destination name">
+             <i class="fa fa-phone" id="call"></i>
+             <i class="fa fa-phone" id="end"></i>
+
+         </div>
+
+        </div>
+      </div>
+
+     </div>
+      <script src="js/ui.js"></script>
   </body>
 </html>
