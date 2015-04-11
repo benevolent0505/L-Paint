@@ -16,14 +16,14 @@ define(function(require) {
     this.context.lineCap = 'round'
   };
 
-  Draw.prototype.clear = function() {
+  Draw.prototype.clear = function(color, width) {
     this.context.fillStyle = 'rgba(255, 255, 255, 1.0)';
     this.context.fillRect(0, 0, this.width, this.height);
     this.drag = false;
     this.lock = false;
-    this.context.fillStyle = '#000000';
-    this.context.strokeStyle = '#000000';
-    this.context.lineWidth = 10;
+    this.context.fillStyle = color;
+    this.context.strokeStyle = color;
+    this.context.lineWidth = width;
     this.context.lineCap = 'round';
   };
 

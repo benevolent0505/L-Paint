@@ -24,6 +24,7 @@ define(function(require) {
   var eraseButton = document.getElementById('erase');
   var clear = document.getElementById('clear');
   var getNameButton = document.getElementById('get-name');
+  var modelControl = document.getElementById('model-control');
 
 
   // 変数宣言
@@ -141,7 +142,7 @@ define(function(require) {
           // 描画とか
           switch (data.type) {
             case 'clear':
-              draw.clear();
+              draw.clear(modelControl.style.background, modelControl.style.width);
             case 'fill':
               fill.fillByOther(data.x, data.y, data.hex);
           }
@@ -168,7 +169,7 @@ define(function(require) {
 
 
   clear.addEventListener('click', function() {
-    draw.clear();
+    draw.clear(modelControl.style.background, modelControl.style.width);
     if (dataConnection) {
       dataConnection.send({type: 'clear'});
     }
@@ -304,7 +305,7 @@ define(function(require) {
         // 描画とか
         switch (data.type) {
           case 'clear':
-            draw.clear();
+            draw.clear(modelControl.style.background, modelControl.style.width);
           case 'fill':
             fill.fillByOther(data.x, data.y, data.hex);
         }
