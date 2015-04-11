@@ -192,6 +192,8 @@ define(function(require) {
       var style = e.target.getAttribute('style');
       var color = style.match(/background:(#......)/)[1];
 
+      document.getElementById('model-control').style.background = color;
+
       draw.changeColor(color);
       fillColor = color;
     },false);
@@ -202,6 +204,9 @@ define(function(require) {
   forEach.call(sizes, function(node){
     node.addEventListener('click', function(e){
       var size = e.currentTarget.getAttribute('data-size');
+
+      document.getElementById('model-control').style.width = size + 'px';
+      document.getElementById('model-control').style.height = size + 'px';
 
       draw.changeLineWidth(size);
     }, false);
@@ -235,6 +240,8 @@ define(function(require) {
 
           peerCall();
           peerConnection();
+
+          document.getElementById('my-id').textContent = peer.id;
 
           navigator.getUserMedia({video: true, audio: true},
             function(stream) {
