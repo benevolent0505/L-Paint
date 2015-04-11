@@ -51,8 +51,8 @@ modal contents
 }
 
 #my-id{
-    margin-top: 30px;
-    margin-bottom: 20px;
+    color: aqua;
+    padding: 10px;
 }
 
 #video-chat {
@@ -382,6 +382,38 @@ button:hover{
     border-radius: 5px;
 }
 
+#model{
+    display: inline-block;
+    float: left;
+    padding-left: 8px;
+    margin-bottom: 10px;
+}
+
+#model .model_size{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    background: #fff;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: inset 0 0 2px rgba(0,0,0,0);
+    line-height: 17px;
+    border-radius: 1px;
+    border: 1px solid #666666;
+}
+
+#model .model_size div{
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+
+.model1{
+    float: left;
+    margin-right: 10px;
+    
+}
 
 /* -- Responsive Styles (Media Queries) ------------------------------------- */
 
