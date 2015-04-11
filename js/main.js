@@ -36,6 +36,7 @@ define(function(require) {
 
   var fillColor = '#000000';
   var fillFlag = false;
+  var eraseFlag = false;
 
   // NodeListにforEachを付与するため
   var forEach = Array.prototype.forEach;
@@ -181,10 +182,12 @@ define(function(require) {
       var style = e.target.getAttribute('style');
       var color = style.match(/background:(#......)/)[1];
 
-      document.getElementById('model-control').style.background = color;
+      if (!eraseFlag) {
+        document.getElementById('model-control').style.background = color;
 
-      draw.changeColor(color);
-      fillColor = color;
+        draw.changeColor(color);
+        fillColor = color;
+      }
     },false);
   });
 
@@ -194,10 +197,12 @@ define(function(require) {
     node.addEventListener('click', function(e){
       var size = e.currentTarget.getAttribute('data-size');
 
-      document.getElementById('model-control').style.width = size + 'px';
-      document.getElementById('model-control').style.height = size + 'px';
+      if (!eraseFlag) {
+        document.getElementById('model-control').style.width = size + 'px';
+        document.getElementById('model-control').style.height = size + 'px';
 
-      draw.changeLineWidth(size);
+        draw.changeLineWidth(size);
+      }
     }, false);
   });
 
@@ -212,6 +217,8 @@ define(function(require) {
   }, false);
   eraseButton.addEventListener('click', function() {
     fillFlag = false;
+    eraseFlag = eraseFlag ? false : true;
+    draw.changeLineWidth(10);
     draw.changeColor('#FFFFFF');
   }, false);
   getNameButton.addEventListener('click', function() {
