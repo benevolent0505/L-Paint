@@ -24,6 +24,7 @@ define(function(require) {
   var eraseButton = document.getElementById('erase');
   var clear = document.getElementById('clear');
   var getNameButton = document.getElementById('get-name');
+  var importVideoImage = document.getElementById('import-video');
 
 
   // 変数宣言
@@ -248,7 +249,13 @@ define(function(require) {
       document.getElementById('message').style.display = 'block';
     }
   }, false);
-
+  importVideoImage.addEventListener('click', function() {
+    //var tmpImageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    var destVideo = document.getElementById('dest-video');
+    context.drawImage(destVideo, (canvas.width - destVideo.width)/2,
+      (canvas.height - destVideo.height)/2, destVideo.width, destVideo.height);
+    //context.putImageData(tmpImageData, 0, 0);
+  }, false);
 
   // 選択中のボタンを目立たせる
   var controls = document.getElementById('control').children;
