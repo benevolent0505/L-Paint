@@ -11,10 +11,11 @@ define(function(require) {
 
   // require
   var Draw = require('./draw');
-  var fill = require('./fill');
+  var Fill = require('./fill');
   var Media = require('./media');
 
   var draw = new Draw(canvas);
+  var fill = new Fill(canvas);
   var media = new Media();
 
   // UIオブジェクト
@@ -22,12 +23,15 @@ define(function(require) {
   var fillButton = document.getElementById('fill');
   var eraseButton = document.getElementById('erase');
   var clear = document.getElementById('clear');
+  var getNameButton = document.getElementById('get-name');
 
 
   // 変数宣言
   var KEY = '59a484aa-de27-4986-b1f0-91d0a604f936';
+  var peer;
   var destId;
   var dataConnection;
+  var myName;
 
   var fillColor = '#000000';
   var fillFlag = false;
@@ -37,26 +41,22 @@ define(function(require) {
 
 
   // Peerオブジェクトの生成
-  var peer = new Peer({key: KEY, debug: true});
+  //var peer = new Peer('mikio', {key: KEY, debug: true});
 
-
-  // Peer ID生成
-  peer.on('open', function(id) {
-    document.getElementById('my-id').textContent = id;
-  });
-
-  // Debug用途
-  peer.listAllPeers(function(list) {
-    list.forEach(function(p) {
-      console.log(p);
-    });
-  });
 
   // canvasに対する操作
   // draw関係
   canvas.addEventListener('mousedown', function(e) {
     if (fillFlag) {
       fill.fillArea(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop, fillColor);
+      if (dataConnection) {
+        dataConnection.send({
+          type: 'fill',
+          x: e.clientX - canvas.offsetLeft,
+          y: e.clientY - canvas.offsetTop,
+          hex: fillColor
+        });
+      }
     } else {
       draw.mouseDown(e.clientX, e.clientY);
       // ここの条件が怪しい(各箇所)
@@ -73,7 +73,7 @@ define(function(require) {
   },false);
   canvas.addEventListener('mousemove', function(e) {
     draw.mouseMove(e.clientX, e.clientY);
-    if (dataConnection) {
+    if (dataConnection && draw.drag) {
       dataConnection.send({
         type: 'move',
         x: e.clientX,
@@ -110,41 +110,21 @@ define(function(require) {
 
 
   // 相手からcallしてきたときの処理
-  peer.on('call', function(call) {
-    if (window.confirm(" is calling you. Do you answer the call ?")) {
-      var destVideo = document.getElementById('dest-video');
+  if (peer) {
 
-      media.answer(call, destVideo);
-    } else {
-      media.close(call);
-    }
-  });
+  }
 
 
   // 向こうからのCanvansの更新
-  peer.on('connection', function(connection) {
-    dataConnection = connection;
+  if (peer) {
 
-    dataConnection.on('data', function(data) {
-      // 描画
-      console.log(data);
-      if (data.type == 'clear') {
-        draw.clear();
-      }
-      draw.drawByOther(data.type, data.x, data.y, data.color, data.width);
-    });
-    dataConnection.on('close', function() {
-      console.log('close');
-      alert('close');
-      reset();
-    });
-  });
+  }
 
 
   // 自分のカメラのロード
   document.getElementById('load-media')
     .addEventListener('click', function(){
-      navigator.getUserMedia({video: true, audio:false},
+      navigator.getUserMedia({video: true, audio: true},
         function(stream) {
           media.loadStream(stream);
           document.getElementById('my-video').setAttribute('src', URL.createObjectURL(stream));
@@ -161,6 +141,7 @@ define(function(require) {
 
       media.call(peer, destId);
       media.stream(destVideo);
+      document.getElementById('dest-name').textContent = destId;
 
       // DataConnection 開始
       var connection = peer.connect(destId);
@@ -168,10 +149,12 @@ define(function(require) {
         dataConnection = connection;
 
         dataConnection.on('data', function(data) {
-          // 描画
-          console.log(data);
-          if (data.type == 'clear') {
-            draw.clear();
+          // 描画とか
+          switch (data.type) {
+            case 'clear':
+              draw.clear();
+            case 'fill':
+              fill.fillByOther(data.x, data.y, data.hex);
           }
           draw.drawByOther(data.type, data.x, data.y, data.color, data.width);
         });
@@ -236,6 +219,39 @@ define(function(require) {
     fillFlag = false;
     draw.changeColor('#FFFFFF');
   }, false);
+  getNameButton.addEventListener('click', function() {
+    myName = document.getElementById('my-name').value;
+    console.log(myName);
+    if (myName) {
+      peer = createPeer(myName);
+
+      setTimeout(function() {
+        if (peer.id) {
+
+          var nameForm = document.getElementById('modal-content');
+          nameForm.parentNode.removeChild(nameForm);
+          var overlay = document.getElementById('modal-overlay');
+          overlay.parentNode.removeChild(overlay);
+
+          peerCall();
+          peerConnection();
+
+          navigator.getUserMedia({video: true, audio: true},
+            function(stream) {
+              media.loadStream(stream);
+              document.getElementById('my-video').setAttribute('src', URL.createObjectURL(stream));
+            },
+            function(err) { console.log(err); });
+        } else {
+          document.getElementById('message').textContent = 'The name you have entered is not unique.';
+          document.getElementById('message').style.display = 'block';
+        }
+      }, 500);
+    } else {
+      document.getElementById('message').textContent = 'Your name is empty!!!';
+      document.getElementById('message').style.display = 'block';
+    }
+  }, false);
 
 
   // 選択中のボタンを目立たせる
@@ -255,5 +271,46 @@ define(function(require) {
     peer.disconnect();
     dataConnection = '';
     destId = '';
+  };
+
+  var createPeer = function(id) {
+    var p = new Peer(id, {key: KEY, debug: true});
+
+    return p;
+  };
+
+  var peerCall = function() {
+    peer.on('call', function(call) {
+      if (window.confirm(call.peer + ' is calling you. Do you answer the call?')) {
+        var destVideo = document.getElementById('dest-video');
+        document.getElementById('dest-name').textContent = call.peer;
+
+        media.answer(call, destVideo);
+      } else {
+        media.close(call);
+      }
+    });
+  };
+
+  var peerConnection = function() {
+    peer.on('connection', function(connection) {
+      dataConnection = connection;
+
+      dataConnection.on('data', function(data) {
+        // 描画とか
+        switch (data.type) {
+          case 'clear':
+            draw.clear();
+          case 'fill':
+            fill.fillByOther(data.x, data.y, data.hex);
+        }
+        draw.drawByOther(data.type, data.x, data.y, data.color, data.width);
+      });
+      dataConnection.on('close', function() {
+        console.log('close');
+        alert('close');
+        reset();
+      });
+    });
   };
 });

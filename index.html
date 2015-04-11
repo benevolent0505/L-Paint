@@ -23,19 +23,19 @@
     <script src="https://skyway.io/dist/0.3/peer.js"></script>
   </head>
   <body>
-    
+
     <div id="layout">
-        
+
         <!--ここから名前登録-->
         <div id="modal-content">
             <p>Enter your user name.</p>
             <input type="text" id="my-name" placeholder="Your Name">
-            <div class="icono-caretRightCircle"></div>
+            <div class="icono-caretRightCircle" id="get-name"></div>
             <p></p>
             <div id="message">The name you have entered is not unique.</div>
         </div>
         <!--ここまで名前登録-->
-        
+
         <div id="modal-overlay"></div>
       <!-- Menu toggle -->
       <a href="#menu" id="menuLink" class="menu-link">
@@ -48,7 +48,7 @@
         <div class="pure-menu">
 
           <div id="my-id" class="icono-user"></div>
-            
+
           <div class="pure-menu">
               <ul class="pure-menu-list" id="control">
                 <li class="pure-menu-item"><button id="draw">Draw</button></li>
@@ -95,7 +95,7 @@
            <h2 class="content-subhead">Video</h2>
            <div id="video-chat">
              <video id="dest-video" width="320" height="240" autoplay></video>
-               <div id="dest-name">name</div>
+               <div id="dest-name"></div>
              <video id="my-video" width="120" height="90" autoplay></video>
            </div>
             <br>
