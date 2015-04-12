@@ -8,6 +8,6 @@ Lightning-Paint!!
 * Altolira
 
 
-# memo
+# Website
 
-カレントディレクトリで`$ php -S localhost:8080 `でローカルホストが立ち上がる。
+[Lightning Paint](http://lightning-paint.azurewebsites.net/)
